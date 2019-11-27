@@ -5,8 +5,8 @@ exports.up = function(knex) {
         table.string('username').unique().notNullable()
         table.string('email').unique().notNullable()
         table.string('password').notNullable()
-        table.boolean('disabled').defaultTo(false)
-        table.boolean('emailVerified').defaultTo(false)
+        table.boolean('disabled').notNullable().defaultTo(false)
+        table.boolean('emailVerified').notNullable().defaultTo(false)
         table.timestamps(true, true)
     })
 }

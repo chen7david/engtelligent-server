@@ -12,6 +12,8 @@ class User extends BaseModel {
 
         // HASHES PASSWORD UPON INSERT
         this.password = await bcrypt.hash(this.password, 10)
+        this.disabled = false
+        this.emailVerified = false
     }
 
     async $beforeUpdate(){

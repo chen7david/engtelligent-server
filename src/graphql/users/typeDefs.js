@@ -2,14 +2,27 @@ const { gql } = require('apollo-server')
 
 const typeDefs = gql`
     # type definitions here ...
+    type User {
+        userId: String!
+        username: String!
+        email: String!
+        disabled: Boolean!
+        emailVerified: Boolean!
+    }
+
+    input addUserInfo {
+        username: String!
+        email: String!
+        password: String!
+    }
 
     extend type Query {
         # queries here ...
-        helloworld: String!
+        users: [User]!
     }   
     
     extend type Mutation {
-        hello(name: String!):String!
+        addUser(addUserInfo: addUserInfo!): User!
     }
 `
 

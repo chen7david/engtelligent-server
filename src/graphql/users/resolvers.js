@@ -1,18 +1,24 @@
-
+const { User } = require('./../../models')
 
 const resolvers = {
 
     Query: {
-        helloworld: (parent, agrs, ctx) => "hello you !"
+        users: async (_, args, ctx) => {
+            console.log(ctx)
+            return await User.query()
+        }
     },
 
-    // Mutation: {
+    Mutation: {
+        addUser: async (_, args, ctx) => {
+            const user = await User.query().insert(args.addUserInfo)
+            return user
+        }
+    },
 
-    // },
+    User: {
 
-    // User: {
-
-    // }
+    }
 
 }
 
